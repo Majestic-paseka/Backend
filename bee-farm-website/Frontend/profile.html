@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <link rel="icon" href="data:,">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Улей Земли - Профиль</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <div class="logo-container">
+      <img src="images/new_logo.png" alt="Логотип фермы" />
+      <h1 class="logo-text">Улей Земли</h1>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Главная</a></li>
+        <li><a href="bee-managment.html">Учёт пчёл</a></li>
+        <li><a href="honey-management.html">Учёт мёда</a></li>
+        <li><a href="flower-management.html">Учёт цветов</a></li>
+        <li><a href="profile.html" class="active">Профиль</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="profile">
+      <h2>Профиль пользователя</h2>
+      <div class="profile-info">
+        <div class="profile-picture-container">
+          <img src="images/user.png" alt="Фото профиля" class="profile-picture" />
+        </div>
+        <div class="details">
+          <p><strong>ФИО:</strong> <span id="name">Загрузка...</span></p>
+          <p><strong>Email:</strong> <span id="email">Загрузка...</span></p>
+          <p><strong>Телефон:</strong> <span id="phone">Загрузка...</span></p>
+          <p><strong>Должность:</strong> <span id="role">Загрузка...</span></p>
+          <p><strong>Пчелиных семей:</strong> <span id="beeNum">Загрузка...</span></p>
+        </div>
+      </div>
+      <div class="profile-actions">
+        <button class="logout-button" id="logout-button">Выйти</button>
+      </div>
+    </section>    
+  </main>
+
+  <audio id="background-music" autoplay loop>
+    <source src="Stardew Valley Overture.mp3" type="audio/mpeg" />
+    Ваш браузер не поддерживает воспроизведение аудио.
+  </audio>
+
+  <footer>
+    <p>© 2025 ООО "Улей Земли". Все права защищены.</p>
+  </footer>
+  <script src="profile.js"></script>
+</body>
+</html>

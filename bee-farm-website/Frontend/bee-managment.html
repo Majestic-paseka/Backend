@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <link rel="icon" href="data:,">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Улей Земли - Учёт пчёл</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="logo-container">
+      <img src="images/new_logo.png" alt="Логотип фермы">
+      <h1 class="logo-text">Улей Земли</h1>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Главная</a></li>
+        <li><a href="bee-management.html" class="active">Учёт пчёл</a></li>
+        <li><a href="honey-management.html">Учёт мёда</a></li>
+        <li><a href="flower-management.html">Учёт цветов</a></li>
+        <li><a href="profile.html">Профиль</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="bee-management">
+      <h2>Учёт пчелиных семей</h2>
+      <div class="filter-wrapper">
+        <label for="filter-key">Фильтр по:</label>
+        <select id="filter-key">
+          <option value="">— Выберите параметр —</option>
+          <option value="beefamily_number">Номер семьи</option>
+          <option value="queen_birth_year">Год рождения матки</option>
+          <option value="mother_family">Материнская семья</option>
+          <option value="queen_breed">Порода</option>
+          <option value="queen_line">Вид</option>
+        </select>
+
+        <select id="filter-value" disabled>
+          <option value="">— Сначала выберите параметр —</option>
+        </select>
+      </div>
+      </div>        
+    <table class="bee-table" id="beeFamilyTable">
+
+        <thead>
+          <tr>
+            <th>Номер семьи</th>
+            <th>Год рождения</th>
+            <th>Порода</th>
+            <th>Вид</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- всё подгружаетсья из js-файла-->
+        </tbody>
+      </table>
+      <button id="addBeeFamilyBtn" class="add-button">Добавить пчелиную семью</button>
+    </section>
+
+    <!-- Модальное окно для добавления пчелиной семьи -->
+<div id="addModal" class="modal">
+  <div class="modal-content">
+    <span class="close-modal" id="add-close">&times;</span>
+    <h2>Добавить пчелиную семью</h2>
+    <form id="add-bee-form">
+      <div class="form-group">
+        <label for="add-beefamily-number">Номер семьи:</label>
+        <input type="text" id="add-beefamily-number" required>
+      </div>
+      <div class="form-group">
+        <label for="add-queen-birth-year">Год рождения матки:</label>
+        <input type="number" id="add-queen-birth-year" required>
+      </div>
+      <div class="form-group">
+        <label for="add-mother-family">Материнская семья:</label>
+        <input type="text" id="add-mother-family">
+      </div>
+      <div class="form-group">
+        <label for="add-queen-breed">Порода матки:</label>
+        <input type="text" id="add-queen-breed">
+      </div>
+      <div class="form-group">
+        <label for="add-queen-line">Линия матки:</label>
+        <input type="text" id="add-queen-line">
+      </div>
+      <button type="submit" class="submit-button">Сохранить</button>
+    </form>
+  </div>
+</div>
+
+
+    <!-- Модальное окно для подтверждения удаления -->
+    <div id="deleteModal" class="modal">
+      <div class="modal-content">
+        <h2>Подтверждение удаления</h2>
+        <p>Вы действительно хотите удалить эту запись?</p>
+        <div class="modal-actions">
+          <button id="confirm-delete" class="modal-delete-button">Удалить</button>
+          <button id="cancel-delete" class="modal-cancel-button close-modal">Отмена</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Модальное окно для вывода подробной информации -->
+    <div id="detailsModal" class="modal">
+      <div class="modal-content">
+        <span class="close-button" id="details-close-button">&times;</span>
+        <h2>Подробная информация о пчелиной семье</h2>
+        <div class="details-content">
+          <p><strong>ID:</strong> <span id="detail-beefamily-id"></span></p>
+          <p><strong>Номер семьи:</strong> <span id="detail-beefamily-number"></span></p>
+          <p><strong>Год рождения матки:</strong> <span id="detail-queen-birth-year"></span></p>
+          <p><strong>Материнская семья:</strong> <span id="detail-mother-family"></span></p>
+          <p><strong>Порода матки:</strong> <span id="detail-queen-breed"></span></p>
+          <p><strong>Линия матки:</strong> <span id="detail-queen-line"></span></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Модальное окно для редактирования подробной информации -->
+    <div id="editModal" class="modal">
+      <div class="modal-content">
+        <span class="close-modal" id="edit-close-button">&times;</span>
+        <h2>Редактировать пчелиную семью</h2>
+        <form id="edit-bee-form">
+          <div class="form-group">
+            <label for="edit-beefamily-id">ID:</label>
+            <input type="text" id="edit-beefamily-id" name="beefamily_id" readonly>
+          </div>
+          <div class="form-group">
+            <label for="edit-beefamily-number">Номер семьи:</label>
+            <input type="text" id="edit-beefamily-number" name="beefamily_number">
+          </div>
+          <div class="form-group">
+            <label for="edit-queen-birth-year">Год рождения матки:</label>
+            <input type="number" id="edit-queen-birth-year" name="queen_birth_year">
+          </div>
+          <div class="form-group">
+            <label for="edit-mother-family">Материнская семья:</label>
+            <input type="text" id="edit-mother-family" name="mother_family">
+          </div>
+          <div class="form-group">
+            <label for="edit-queen-breed">Порода:</label>
+            <input type="text" id="edit-queen-breed" name="queen_breed">
+          </div>
+          <div class="form-group">
+            <label for="edit-queen-line">Вид:</label>
+            <input type="text" id="edit-queen-line" name="queen_line">
+          </div>
+          <button type="submit" id="save-edit" class="submit-button">Сохранить изменения</button>
+        </form>
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    <p>© 2025 ООО "Улей Земли". Все права защищены.</p>
+  </footer>
+  <script src="bee-managment.js"></script>
+</body>
+</html>

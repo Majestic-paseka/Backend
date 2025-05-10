@@ -1,0 +1,1038 @@
+/* Стили для всего тела страницы */
+body {
+    font-family: Arial, sans-serif;
+    padding: 0;
+    background-color: #FFF8E1; /* Светло-желтый фон */
+    color: #212121; /* Темный цвет текста */
+    min-height: 100vh; /* Минимальная высота страницы равна высоте экрана */
+    margin: 0; /* Без лишних отступов */
+    overflow-y: auto; /* Вертикальная прокрутка */
+}
+
+/* Шапка сайта */
+header {
+    background-color: #212121;
+    color: #FFC107;
+    padding: 15px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Текст логотипа в шапке */
+.logo-text {
+    font-family: 'Dancing Script', cursive;
+    font-size: 28px;
+    font-weight: 500;
+    color: #FFC107; /* Желтый */
+    text-align: center;
+}
+
+/* Контейнер логотипа (иконка + текст) */
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo-container img {
+    height: 40px; /* Размер логотипа */
+    margin-right: 10px;
+    margin-top: -10px; 
+}
+
+/* Меню навигации */
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Основная часть страницы */
+main {
+    min-height: 90vh; /* Минимальная высота 90% от высоты экрана */
+    padding: 50px; /* Внутренние отступы */
+    box-sizing: border-box; /* Учитывание отступов в общую высоту */
+}
+
+/* Блок статистики */
+.statistics {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+/* Карточка соты */
+.honeycomb-card {
+    width: 200px;
+    height: 220px;
+    background-color: #FFC107; /* Желтый цвет сот */
+    color: #212121; 
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-weight: bold;
+    box-shadow: 0px 0px 10px 5px rgba(255, 248, 225, 0.8); /* Светлая тень для мягких краев которая не работает нифига */
+    margin: 10px;
+    padding: 10px;
+}
+
+/* Контейнер для всех сот */
+.honeycomb-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+.honeycomb-card:nth-child(odd) {
+    transform: translateY(10px); /* Смещение четных карточек вниз */
+}
+
+/* Смещение нечётных сот вниз для "пчелиной сетки" */
+.honeycomb-card img {
+    position: relative;
+    z-index: 1;
+}
+
+/* Заголовок внутри карточки (возможно, лишний класс — нет card в HTML) */
+.card h3 {
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: #333;
+}
+
+.honeycomb-card p {
+    position: relative;
+    z-index: 1;
+}
+
+/* Контейнер с графиками */
+.charts {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+/* Отдельная карточка с графиком */
+.chart-container {
+    width: 500px;
+    height: 300px; /* Фиксированная высота */
+    background-color: #FFF3CD; /* Светло-желтый фон */
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.chart-container h3 {
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.chart-container canvas {
+    height: 220px !important; /* Ограние высоты графика */
+    width: 100% !important; /* Чтобы график заполнял контейнер */
+}
+
+/* Нижний колонтитул */
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #212121; /* Черный */
+    color: #FFC107; /* Желтый */
+    text-align: center;
+    padding: 10px;
+}
+
+/* Профиль пользователя */
+.profile {
+    padding: 20px;
+    text-align: center;
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.profile-picture-container {
+    width: 150px; /* Размер рамки */
+    height: 150px; /* Размер рамки */
+    border-radius: 50%; /* Круглая рамка */
+    border: 5px solid #FFC107; /* Толщина рамки */
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Центрирование изображения */
+}
+
+.profile-picture {
+    width: 80px; /* Размер изображения */
+    height: 80px; /* Размер изображения */
+    border-radius: 50%; /* Сохранение круглой формы для изображения */
+}
+
+/* Блок с деталями профиля */
+.details {
+    background-color: #FFF3CD;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: left;
+    width: 300px;
+}
+
+/* Активный пункт меню */
+nav ul li a.active {
+    color: #FFC107; /* Желтый цвет */
+    
+}
+
+/* Кнопки редактирования и выхода */
+.profile-actions {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px; 
+}
+
+/* Дурацкие кнопки редактировать и выйти разного размера, я исправил их через костыли кое как */
+
+.edit-button-profile {
+    background-color: #FFC107; /* Желтый цвет кнопки */
+    color: #212121; /* Темный текст */
+    border: none;
+    padding: 10px 20px;
+    font-size: 15px;
+    font-weight: 300;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-align: center; /* Центрируем текст внутри кнопок */
+    height: 45px; /* Указываем фиксированную высоту */
+    margin-top: 5px;  /* Отступ сверху для опускания кнопки ниже */
+}
+
+.logout-button {
+    background-color: #FFC107; /* Желтый цвет кнопки */
+    color: #212121; /* Темный текст */
+    border: none;
+    padding: 10px 10px;
+    font-size: 15px;
+    font-weight: 300;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    height: 44px; /* Указывает фиксированную высоту */
+    margin-top: 5px;  /* Отступ сверху для опускания кнопки ниже */
+}
+
+.edit-button:hover, .logout-button:hover {
+    background-color: #FFD54F; /* Более светлый желтый при наведении */
+}
+
+.edit-button:active, .logout-button:active {
+    background-color: #FFB300; /* Более темный желтый при нажатии */
+}
+
+/* Страница входа */
+.login {
+    padding: 20px;
+    text-align: center;
+}
+
+.login-card {
+    width: 400px;
+    background-color: #FFF3CD; /* Светло-желтый фон */
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    margin: 0 auto;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    text-align: left;
+    margin-bottom: 20px; /* Отступ между группами форм */
+}
+
+label {
+    font-size: 14px;
+    font-weight: bold;
+    color: #212121;
+}
+
+/* Поля ввода для email и пароля */
+input[type="email"], input[type="password"] {
+    width: 350px; /* Устанавливается фиксированная ширина */
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #CCC;
+    border-radius: 5px;
+    margin:0%; /* Положение формы */
+    display: block;
+    margin-top: 10px; /* Отступ сверху формы */
+}
+
+input[type="email"]:focus, input[type="password"]:focus {
+    outline: none;
+    border-color: #FFC107;
+    box-shadow: 0 0 5px rgba(255, 193, 7, 0.5);
+}
+
+/* Кнопка входа */
+.login-button {
+    background-color: #FFC107;
+    color: #212121;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 200px; /* Фиксированная ширина */
+    text-align: center;
+    margin: 0 auto; /* Центрирование кнопки */
+}
+
+.login-button:hover {
+    background-color: #FFD54F;
+}
+
+.login-button:active {
+    background-color: #FFB300;
+}
+
+
+.login-button:hover {
+    background-color: #FFD54F;
+}
+
+.login-button:active {
+    background-color: #FFB300;
+}
+
+/* Страница регистрации */
+.register {
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 20px; /* Добавление немного пространства внизу для плавной прокрутки */
+}
+
+.register-card {
+    width: 90%; /* Адаптивная ширина для небольших экранов */
+    max-width: 500px; /* Максимальная ширина для больших экранов */
+    height: auto; /* Автоматическая высота */
+    background-color: #FFF3CD;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    margin: 0 auto;
+    overflow-y: auto; /* Прокрутка при необходимости */
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px; /* Отступ между группами форм */
+}
+
+.form-group label {
+    display: block; /* Лейбл как блочный элемент */
+    margin-bottom: 10px; /* Отступ между текстом лейбла и формой ввода */
+}
+
+/* Поля формы регистрации */
+input[type="text"], input[type="email"], input[type="tel"], input[type="password"], input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #CCC;
+    border-radius: 5px;
+    margin: 0 auto; 
+    display: block;
+}
+
+input[type="text"]:focus, input[type="email"]:focus, input[type="tel"]:focus, input[type="file"]:focus {
+    outline: none;
+    border-color: #FFC107;
+    box-shadow: 0 0 5px rgba(255, 193, 7, 0.5);
+}
+
+/* Кнопка регистрации */
+.register-button {
+    background-color: #FFC107; /* Желтая кнопка */
+    color: #212121; /* Темный текст */
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 200px; /* Компактная ширина кнопки */
+    text-align: center;
+    margin: 0 auto;
+}
+
+.register-button:hover {
+    background-color: #FFD54F;
+}
+
+.register-button:active {
+    background-color: #FFB300;
+}
+
+/* Поле пароля отдельно */
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #CCC;
+    border-radius: 5px;
+}
+
+input[type="password"]:focus {
+    outline: none;
+    border-color: #FFC107;
+    box-shadow: 0 0 5px rgba(255, 193, 7, 0.5);
+}
+
+/* Кнопка загрузки файла */
+.upload-button {
+    background-color: #FFC107; /* Желтая кнопка */
+    color: #212121;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 200px; /* Компактная ширина кнопки */
+    text-align: center;
+    display: inline-block;
+}
+
+.upload-button:hover {
+    background-color: #FFD54F;
+}
+
+.upload-button:active {
+    background-color: #FFB300;
+}
+
+/* Управление пчёлами — раздел пчеловодства */
+.bee-management {
+    padding: 20px;
+    text-align: center;
+}
+
+/* Фильтры для таблицы */
+.filters {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+/* Таблица пчел */
+.bee-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.bee-table th, .bee-table td {
+    border: 1px solid #CCC;
+    padding: 10px;
+    text-align: center;
+}
+
+.bee-table th {
+    background-color: #FFC107;
+    color: #212121;
+}
+
+.bee-table tr:nth-child(even) {
+    background-color: #FFF8E1;
+}
+
+.bee-table tr:nth-child(odd) {
+    background-color: #FFF3CD;
+}
+.filters label {
+    font-size: 18px;    /* Увеличение размера шрифта */
+    margin-top: 10px;   /* Отступ сверху, чтобы опустить текст ниже */
+    line-height: 1.5;   /* Немного увеличенное межстрочное расстояние */
+}
+
+/* Сужает последний столбец */
+.bee-table th:last-child,
+.bee-table td:last-child {
+    width: 100px;        /* Фиксированная ширина для уменьшения пространства */
+    white-space: nowrap; /* Запрещает перенос строк внутри ячеек */
+    padding: 5px;        /* Уменьшенный отступ для экономии места */
+}
+
+/* Кнопки управления таблицей пчел КАК ОНИ МНЕ УЖЕ НАДОЕЛИ, ОДНО ПОМЕНЯЩЬ СРАЗУ ВСЁ ЛОМАЕТСЯ*/
+.add-button, .edit-button, .delete-button, .details-button {
+    background-color: #FFC107;
+    color: #212121;
+    border: none;
+    padding: 10px 15px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 5px; 
+    transition: background-color 0.3s;
+    font-weight: normal;
+    margin-right: 5px; /* Отступ справа для отделения от текста */
+    font-size: 16px;   /* Размер иконки */
+    vertical-align: middle;
+}
+/* Кнопка "Редактировать" НАДОЕЛА ВСЁ ЛОМАТЬ УЖЕ УЙДИ ОТСЮДА */
+.edit-button {
+    background: url('images/edit.png') no-repeat 10px center; /* Иконка редактирования */
+    background-size: 20px 20px; /* Размер иконки */
+    padding-left: 40px; /* Отступ слева для текста */
+    font-weight: normal;
+    background-color: #FFC107; /* Желтый фон */
+    color: #212121; /* Черный текст */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+  }
+  
+  /* Кнопка "Удалить" */
+  .delete-button {
+    background: url('images/delete.png') no-repeat 10px center; /* Иконка удаления */
+    background-size: 20px 20px; /* Размер иконки */
+    padding-left: 40px; /* Отступ слева для текста */
+    font-weight: normal;
+    background-color: #FFC107; /* Желтый фон */
+    color: #212121; /* Черный текст */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+    vertical-align: middle;
+  }
+  
+  /* Кнопка "Подробнее" ЛУЧШАЯ КНОПКА, ВСЕГДА НОРМАЛЬНО АДАПТИРУЕТСЯ, СПАСИБО ТЕБЕ!*/
+  .details-button {
+    background: url('images/more.png') no-repeat 10px center; /* Иконка подробнее */
+    background-size: 20px 20px; /* Размер иконки */
+    padding-left: 40px; /* Отступ слева для текста */
+    font-weight: normal;
+    background-color: #FFC107; /* Желтый фон */
+    color: #212121; /* Черный текст */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+  }
+  
+  /* Общие эффекты при наведении для всех кнопок */
+  button:hover {
+    background-color: #FFD54F;
+  } 
+
+/* Стили для селектов и числовых полей в фильтрах */
+.filters select, 
+.filters input[type="number"],
+.filters input[type="date"] {
+    background-color: #FFC107; /* Единый желтый фон */
+    color: #212121;           /* Темный текст */
+    border: 1px solid #CCC;   /* Светлая рамка */
+    border-radius: 5px;       /* Скругленные углы */
+    padding: 10px;            /* Внутренние отступы */
+    font-size: 16px;          /* Размер текста */
+    font-weight: bold;        /* Толщина текста */
+    cursor: pointer;          /* Курсор указывает на интерактивность */
+    transition: background-color 0.3s, box-shadow 0.3s; /* Эффекты при наведении */
+    display: inline-block;    /* Одинаковое поведение для обоих элементов */
+    width: 200px;             /* Общая ширина */
+}
+
+/* Псевдоэлементы для браузеров на базе WebKit (Chrome, Safari) ЗАЧЕМ КАЖДЫЙ БРАУЗЕР ПРИДУМАЛ СВОИ ЦВЕТА И ВНЕШНИЙ ВИД ДЛЯ ФИЛЬТРОВ??? */
+.filters input[type="date"]::-webkit-datetime-edit,
+.filters input[type="date"]::-webkit-datetime-edit-day-field,
+.filters input[type="date"]::-webkit-datetime-edit-month-field,
+.filters input[type="date"]::-webkit-datetime-edit-year-field {
+    color: #212121 !important;
+}
+
+.filters select:hover, 
+input[type="number"]::placeholder {
+    color: #212121; /* Темный цвет текста */
+    font-weight: bold; /* Толщина текста */
+    opacity: 1; /* Полная видимость текста */
+}
+
+.filters input[type="number"]:focus {
+    outline: none; /* Без стандартного выделения */
+    border-color: #FFC107; /* Цвет рамки при фокусе */
+    box-shadow: 0 0 5px rgba(255, 193, 7, 0.8); /* Тень при фокусе */
+}
+
+/* Модальное окно: затемнённый фон, покрывающий всю страницу */
+.modal {
+    display: none; /* Скрыто по умолчанию */
+    position: fixed;
+    z-index: 1000; /* Поверх всех остальных элементов */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5); /* Полупрозрачный фон */
+  }
+  
+  /* Контейнер содержимого модального окна */
+  .modal-content {
+    background-color: #FFF3CD; /* Подходящий фон согласно стилю сайта */
+    margin: 10% auto; /* Центрирование по вертикали и горизонтали */
+    padding: 20px;
+    border: 1px solid #CCC;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 500px;
+    position: relative;
+  }
+  
+  /* Кнопка закрытия окна (крестик) */
+  .close-button {
+    color: #212121;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .close-button:hover,
+  .close-button:focus {
+    color: #FFB300;
+  }
+  
+  /* Стили для формы внутри модального окна */
+  .modal-content .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .modal-content .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #212121;
+  }
+  
+  .modal-content .form-group input,
+  .modal-content .form-group select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #CCC;
+    border-radius: 5px;
+    font-size: 15px;
+    box-sizing: border-box;
+    font-weight: 100; 
+    font-size: 16px;  /* единый размер шрифта */
+    line-height: 1.5; /* равномерное межстрочное расстояние */
+    font-family: inherit; /* наследование шрифта от родительского элемента */
+  }
+  
+  /* Стили для кнопки сохранения */
+  .submit-button {
+    background-color: #FFC107;
+    color: #212121;
+    border: none;
+    padding: 10px 15px;
+    font-size: 15px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: block;
+    margin: 0 auto;
+  }
+  
+  .submit-button:hover {
+    background-color: #FFD54F;
+  }
+
+  /* Универсальный стиль для всех полей */
+input[type="text"],
+input[type="number"],
+input[type="email"],
+select,
+textarea {
+    background-color: #FFB300; /* Фон всех полей */
+    color: #212121;            /* Если нужен темный цвет текста */
+    border: 1px solid #CCC;    /* Можно задать границу, если требуется */
+    border-radius: 5px;        /* Скругление углов */
+    padding: 8px;              /* Внутренние отступы */
+    font-size: 15px;           /* Размер шрифта */
+    box-sizing: border-box;    /* Чтобы padding учитывался в размере */
+}
+
+input[type="text"]::placeholder {
+    color: #212121;
+    opacity: 1; /* Обеспечивает полную видимость цвета */
+}
+
+/* Виджет с иконкой пчелы и фактами */
+#bee-widget {
+    position: fixed; /* Фиксированное позиционирование сохраняет виджет в левом нижнем углу */
+    bottom: 77px;
+    left: 20px;
+    z-index: 1000;
+  }
+  
+  /* Оформление иконки (без изменений) */
+  #bee-icon {
+    width: 50px;
+    height: auto;
+    display: block;
+  }
+  
+  /* Окно с фактом, располагаемое справа от иконки пчелы */
+#bee-fact {
+    position: absolute;
+    left: 60px; /* Отступ слева от контейнера, чтобы окно оказалось справа от иконки */
+    bottom: 0;  /* Можно подправить, если нужно выровнять по вертикали */
+    background-color: #FFF3CD;
+    color: #212121;
+    border: 1px solid #CCC;
+    border-radius: 5px;
+    padding: 10px;
+    min-width: 250px;    /* Задаёт минимальную ширину */
+    max-width: 400px;    /* Увеличивает максимальную ширину */
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+  
+  /* Скрытый элемент */
+  .hidden {
+    display: none;
+  } 
+
+/* Определяет анимацию подпрыгивания */
+@keyframes jump {
+    0% {
+      transform: translateY(0);
+    }
+    30% {
+      transform: translateY(-20px);
+    }
+    50% {
+      transform: translateY(0);
+    }
+    70% {
+      transform: translateY(-10px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+  
+  /* Класс, который вызывает анимацию */
+  .jump {
+    animation: jump 0.5s ease;
+  }
+
+  .chart-container-honey {
+    width: 80%;
+    margin: 0 auto;            /* Центрирование контейнера по горизонтали */
+    display: flex;
+    flex-direction: column;
+    align-items: center;       /* Центрирование элементов по горизонтали */
+    justify-content: center;   /* По желанию – центровать элементы по вертикали */
+  }
+  
+  /* Модальное окно: затемнённый фон, покрывающий всю страницу */
+.modal {
+    display: none; /* Скрыто по умолчанию */
+    position: fixed;
+    z-index: 1000; /* Поверх всех остальных элементов */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5); /* Полупрозрачный фон */
+  }
+  
+  /* Контейнер содержимого модального окна */
+  .modal-content {
+    background-color: #FFF3CD; /* Соответствующий стилю сайта */
+    margin: 10% auto; /* Центрирование по вертикали и горизонтали */
+    padding: 20px;
+    border: 1px solid #CCC;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 500px;
+    position: relative;
+  }
+  
+  /* Кнопка закрытия (крестик) */
+  .close-button {
+    color: #212121;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .close-button:hover,
+  .close-button:focus {
+    color: #FFB300;
+  }
+  
+  /* Стили для формы в модальном окне */
+  .modal-content .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .modal-content .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #212121;
+  }
+  
+  .modal-content .form-group input,
+  .modal-content .form-group select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #CCC;
+    border-radius: 5px;
+    font-size: 15px;
+    box-sizing: border-box;
+  }
+  
+  /* Стили для кнопки сохранения */
+  .submit-button {
+    background-color: #FFC107;
+    color: #212121;
+    border: none;
+    padding: 10px 15px;
+    font-size: 15px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: block;
+    margin: 0 auto;
+  }
+  
+  .submit-button:hover {
+    background-color: #FFD54F;
+  }
+  
+/* Новый стиль для кнопки "Удалить" в модальном окне */
+.modal-delete-button {
+    background-color: #e74c3c;    /* Красный цвет фона */
+    color: #fff;                  /* Белый цвет текста */
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-right: 10px;
+}
+
+/* Эффект при наведении на кнопку "Удалить" */
+.modal-delete-button:hover {
+    background-color: #c0392b;
+}
+
+/* Новый стиль для кнопки "Отмена" в модальном окне */
+.modal-cancel-button {
+    background-color: #bdc3c7;    /* Светло-серый фон */
+    color: #212121;               /* Темный текст */
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Эффект при наведении на кнопку "Отмена" */
+.modal-cancel-button:hover {
+    background-color: #95a5a6;
+}
+.close-modal:hover {
+  color: #ffb300;
+}
+.close-modal {
+  color: #333;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 15px;
+}
+.modal-cancel-button.close-modal {
+  position: static;
+  top: auto;
+  right: auto;
+}
+.modal-delete-button,
+.modal-cancel-button {
+  padding: 6px 12px;
+  font-size: 14px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.modal-delete-button {
+  background-color: #e53935;
+  color: white;
+}
+
+.modal-delete-button:hover {
+  background-color: #c62828;
+}
+
+.modal-cancel-button {
+  background-color: #e0e0e0;
+  color: #333;
+}
+
+.modal-cancel-button:hover {
+  background-color: #bdbdbd;
+}
+
+.modal-content h2,
+.modal-content p,
+.modal-content label,
+.modal-content .form-group {
+  text-align: center;
+}
+
+/* Убираем стрелку у всех select */
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: none !important;
+  background-repeat: no-repeat;
+  background-position: right center;
+  padding-right: 1.5rem; /* чуть больше, чтобы не обрезать текст */
+}
+
+/* Опционально: добавить фоновую стрелку, если нужно */
+select::after {
+  display: none;
+}
+.filter-wrapper {
+  display: flex;
+  justify-content: center;  /* Центрирует по горизонтали */
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  padding: 10px 0;
+}
+
+
+/* Общий стиль select-элементов */
+.filter-wrapper select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding: 8px 12px;
+  background-color: #f9b100;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.details-content {
+  text-align: center;
+}
+
+.modal-content input,
+.modal-content select {
+  text-align: center;
+}
+.modal-content h2,
+.modal-content p,
+.modal-content label,
+.modal-content .form-group {
+  text-align: center;
+}
+
+.details-content {
+  text-align: center;
+}
+
+.modal-content input,
+.modal-content select {
+  text-align: center;
+}
+
+.modal-content .submit-button {
+  display: block;
+  margin: 1rem auto;
+}
+
+.modal-content .modal-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.modal-content .modal-delete-button,
+.modal-content .modal-cancel-button {
+  margin: 0;
+}
+

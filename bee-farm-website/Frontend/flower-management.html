@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <link rel="icon" href="data:,">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Учёт цветов для меда - Улей Земли</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Подключение Chart.js для графика -->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> -->
+</head>
+<body>
+  <!-- Шапка сайта -->
+  <header>
+    <div class="logo-container">
+      <img src="images/new_logo.png" alt="Логотип фермы">
+      <h1 class="logo-text">Улей Земли</h1>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Главная</a></li>
+        <li><a href="bee-managment.html">Учёт пчёл</a></li>
+        <li><a href="honey-management.html">Учёт мёда</a></li>
+        <li><a href="flower-management.html" class="active">Учёт цветов</a></li>
+        <li><a href="profile.html">Профиль</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Основной контент страницы -->
+  <main>
+    <section class="bee-management">
+      <h2>Учёт цветов для мёда</h2>
+      
+      <!-- Фильтры для таблицы -->
+    <div class="filters">
+      <label for="universal-filter">Фильтр по таблице:</label>
+      <input type="text" id="universal-filter" placeholder="Введите текст для фильтрации...">
+    </div>
+
+      
+      <!-- Таблица с данными о посеве цветов -->
+      <table class="bee-table">
+        <thead>
+          <tr>
+            <th>Название</th>
+            <th>Вид</th>
+            <th>Цена за килограмм</th>
+            <th>Дата посева</th>
+            <th>Дата цветения</th>
+            <th>Причина посева</th>
+            <th>Продуктивность мёда (кг)</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+      </table>
+      
+      <!-- Кнопка добавления нового цветка -->
+      <button class="add-button">Добавить цветок</button>
+
+    </section>
+
+    <!-- Модальное окно для добавления нового цветка -->
+    <div id="modal-flower" class="modal">
+      <div class="modal-content">
+        <span class="close-button" id="close-flower-modal">&times;</span>
+        <h2>Добавить цветок</h2>
+        <form id="add-flower-form">
+          <div class="form-group">
+            <label for="flower-type">Название цветка:</label>
+            <input type="text" id="flower-type" name="flowerType" required>
+          </div>
+          <div class="form-group">
+            <label for="plant-species">Вид:</label>
+            <input type="text" id="plant-species" name="plantSpecies" required>
+          </div>
+          <div class="form-group">
+            <label for="honey-price">Цена мёда (₽):</label>
+            <input type="number" id="honey-price" name="honeyPrice" step="0.01" required>
+          </div>
+          <div class="form-group">
+            <label for="sowing-date">Дата посева:</label>
+            <input type="date" id="sowing-date" name="sowingDate" required>
+          </div>
+          <div class="form-group">
+            <label for="bloom-date">Дата цветения:</label>
+            <input type="date" id="bloom-date" name="bloomDate" required>
+          </div>
+          <div class="form-group">
+            <label for="purpose-of-sowing">Цель посева:</label>
+            <input type="text" id="purpose-of-sowing" name="purposeOfSowing" required>
+          </div>
+          <div class="form-group">
+            <label for="honey-productivity">Продуктивность мёда (кг):</label>
+            <input type="number" id="honey-productivity" name="honeyProductivity" step="0.01" required>
+          </div>
+          <button type="submit" class="submit-button">Сохранить</button>
+        </form>
+
+      </div>
+    </div>
+
+    <!-- Модальное окно для подтверждения удаления -->
+    <div id="delete-modal" class="modal">
+      <div class="modal-content">
+        <span class="close-button" id="delete-close-button">&times;</span>
+        <h2>Подтверждение удаления</h2>
+        <p>Вы действительно хотите удалить эту запись?</p>
+        <div class="modal-actions">
+          <button id="confirm-delete" class="modal-delete-button">Удалить</button>
+          <button id="cancel-delete" class="modal-cancel-button">Отмена</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Модальное окно для подробной информации о цветке -->
+    <div id="details-flower-modal" class="modal">
+      <div class="modal-content">
+        <span class="close-button" id="details-flower-close-button">&times;</span>
+        <h2>Подробная информация о культуре</h2>
+        <div class="details-content">
+          <p><strong>ID:</strong> <span id="detail-plant-id"></span></p>
+          <p><strong>Название:</strong> <span id="detail-plant-name"></span></p>
+          <p><strong>Вид:</strong> <span id="detail-plant-species"></span></p>
+          <p><strong>Цена мёда:</strong> <span id="detail-honey-price"></span></p>
+          <p><strong>Начало цветения:</strong> <span id="detail-start-blooming"></span></p>
+          <p><strong>Окончание цветения:</strong> <span id="detail-end-blooming"></span></p>
+          <p><strong>Цель посева:</strong> <span id="detail-purpose-of-sowing"></span></p>
+          <p><strong>Урожайность мёда:</strong> <span id="detail-honey-productivity"></span></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Модальное окно для редактирования данных о цветке -->
+    <div id="edit-flower-modal" class="modal">
+      <div class="modal-content">
+        <span class="close-button" id="edit-flower-close-button">&times;</span>
+        <h2>Редактировать данные о культуре</h2>
+        <form id="edit-flower-form">
+          <input type="hidden" id="edit-plant-id" name="plant_id">
+          <div class="form-group">
+            <label for="edit-plant-name">Название:</label>
+            <input type="text" id="edit-plant-name" name="plant_name">
+          </div>
+          <div class="form-group">
+            <label for="edit-plant-species">Вид:</label>
+            <input type="text" id="edit-plant-species" name="plant_species">
+          </div>
+          <div class="form-group">
+            <label for="edit-honey-price">Цена мёда:</label>
+            <input type="number" id="edit-honey-price" name="honey_price" step="0.01">
+          </div>
+          <div class="form-group">
+            <label for="edit-start-blooming">Начало цветения:</label>
+            <input type="date" id="edit-start-blooming" name="start_blooming">
+          </div>
+          <div class="form-group">
+            <label for="edit-end-blooming">Окончание цветения:</label>
+            <input type="date" id="edit-end-blooming" name="end_blooming">
+          </div>
+          <div class="form-group">
+            <label for="edit-purpose-of-sowing">Цель посева:</label>
+            <input type="text" id="edit-purpose-of-sowing" name="purpose_of_sowing">
+          </div>
+          <div class="form-group">
+            <label for="edit-honey-productivity">Урожайность мёда:</label>
+            <input type="number" id="edit-honey-productivity" name="honey_productivity" step="0.01">
+          </div>
+          <button type="submit" class="submit-button">Сохранить изменения</button>
+        </form>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Футер сайта -->
+  <footer>
+    <p>© 2025 ООО "Улей Земли". Все права защищены.</p>
+  </footer>
+  <script src="flower-management.js"></script>
+
+</body>
+</html>

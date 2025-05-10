@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <link rel="icon" href="data:,">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Улей Земли - Главная</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="images/new_logo.png" alt="Логотип фермы">
+            <h1 class="logo-text">Улей Земли</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html" class="active">Главная</a></li>
+                <li><a href="bee-managment.html">Учёт пчёл</a></li>
+                <li><a href="honey-management.html">Учёт мёда</a></li>
+                <li><a href="flower-management.html">Учёт цветов</a></li>
+                <li><a href="profile.html">Профиль</a></li>
+            </ul>
+        </nav>
+    </header>    
+
+    <main>
+        <section class="statistics">
+            <div class="honeycomb-container">
+                <div class="honeycomb-card">
+                    <img src="images/bee-black.png" alt="Пчелиные семьи" width="50">
+                    <p>Пчелиные семьи</p>
+                    <h3 id="beeCount">0</h3>
+                </div>
+                <div class="honeycomb-card">
+                    <img src="images/flower.png" alt="Цветы для мёда" width="50">
+                    <p>Цветы для мёда</p>
+                    <h3 id="flowerCount">0</h3>
+                </div>
+                <div class="honeycomb-card">
+                    <img src="images/honey.png" alt="Собрано мёда" width="50">
+                    <p>Собрано мёда</p>
+                    <h3 id="honeyKg">0 кг</h3>
+                </div>
+            </div>                              
+        </section>
+        <section class="charts">
+            <div class="chart-container">
+                <h3>Прирост/убыль пчелиных семей</h3>
+                <canvas id="beeChart"></canvas>
+            </div>
+            <div class="chart-container">
+                <h3>Урожайность медовых цветов (кг)</h3>
+                <canvas id="flowerChart"></canvas>
+            </div>
+        </section>
+        
+        <!-- Подключение Chart.js -->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="charts.js"></script>
+    </main>
+
+    <audio id="background-music" autoplay loop>
+        <source src="Stardew Valley Overture.mp3" type="audio/mpeg">
+    </audio>
+
+    <footer>
+        <p>© 2025 ООО "Улей Земли". Все права защищены.</p>
+    </footer>
+
+     <!-- Виджет с иконкой пчелы и случайными фактами (есть два очень грустных, лучше не читай 😞) -->
+  <div id="bee-widget">
+    <img src="images/smile_bee.png" alt="Пчела" id="bee-icon">
+    <div id="bee-fact" class="hidden"></div>
+  </div>
+  
+  <!-- Скрипт для работы виджета -->
+  <script>
+    // Массив случайных фактов о пчёлах
+    const beeFacts = [
+      "Пчёлы общаются с помощью танца!",
+      "Опыляют более 100 видов растений.",
+      "Пчелиная матка может откладывать до 2000 яиц в день.",
+      "Мёд никогда не портится!",
+      "Пчёлы видят ультрафиолетовый свет.",
+      "Пчелиное общество основано на чётком распределении ролей.",
+      "Пчёлы умеют считать до четырёх!",
+      "Пчёлы могут летать со скоростью около 25–30 км/ч!",
+      "Соты у пчёл имеют форму шестиугольника, потому что такая форма позволяет максимально эффективно использовать пространство и обеспечивает прочность конструкции",
+      "Исследования показывают, что пчёлы чувствительны к магнитному полю Земли, что помогает им ориентироваться во время полёта.",
+      "Катя не работает, я видел",
+      "Не шутите, а то Даша вас обидет(",
+      "Пчёлы способны запоминать цвета, формы и даже расположение цветов, что помогает им возвращаться к лучшим источникам нектара."
+    ];
+  
+    // Порог для секретного открытия: 10 кликов за 1 секунду
+    const secretThreshold = 10;      // требуемое число кликов
+    const secretTimeLimit = 1000;     // временной интервал в миллисекундах
+  
+    let clickCount = 0;
+    let lastClickTime = 0;
+  
+    const beeWidget = document.getElementById("bee-widget");
+    const beeIcon = document.getElementById("bee-icon");
+    const beeFactDiv = document.getElementById("bee-fact");
+  
+    beeWidget.addEventListener("click", () => {
+      // СЕКРЕТНАЯ!!! логика: подсчёт быстрых последовательных кликов для СЕКРЕТКИ!!!
+      const currentTime = Date.now();
+      if (currentTime - lastClickTime < secretTimeLimit) {
+        clickCount++;
+      } else {
+        clickCount = 1;
+      }
+      lastClickTime = currentTime;
+      
+      // Если достигнут порог быстрых кликов, БУДЕТ СЕКРЕТКА!!!
+      if (clickCount >= secretThreshold) {
+        window.open("images/mem_bee.jpeg", "_blank");
+        clickCount = 0; // сбрасывает счётчик
+        return; // прекращает выполнение остальной логики для этого клика
+      }
+  
+      // Основная логика: отображает случайный факт
+      const randomIndex = Math.floor(Math.random() * beeFacts.length);
+      beeFactDiv.textContent = beeFacts[randomIndex];
+      beeFactDiv.classList.remove("hidden");
+  
+      // Добавляет класс для анимации подпрыгивания иконки
+      beeIcon.classList.add("jump");
+      // Слушатель удаления класса после завершения анимации
+      beeIcon.addEventListener("animationend", () => {
+        beeIcon.classList.remove("jump");
+      }, { once: true });
+      
+      // Через 10 секунд скрывается сообщение и очищает текст:
+      setTimeout(() => {
+        beeFactDiv.textContent = "";
+        beeFactDiv.classList.add("hidden");
+      }, 10000);
+    });
+  </script>
+  <script src="index.js"></script>    
+</body>
+</html>

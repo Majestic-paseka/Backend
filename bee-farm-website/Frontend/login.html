@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <link rel="icon" href="data:,">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Улей Земли - Вход</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="images/new_logo.png" alt="Логотип фермы">
+            <h1 class="logo-text">Улей Земли</h1>
+        </div>
+    </header>
+
+    <main>
+        <section class="login">
+            <h2>Вход в профиль</h2>
+            <div class="login-card">
+                <form id="login-form">
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required placeholder="Введите ваш email">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Пароль:</label>
+                        <input type="password" id="password" name="password" required placeholder="Введите ваш пароль">
+                    </div>
+                    <button type="submit" class="login-button">Войти</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <audio id="background-music" autoplay loop>
+        <source src="Stardew Valley Overture.mp3" type="audio/mpeg">
+        Ваш браузер не поддерживает воспроизведение аудио.
+    </audio>
+    
+    <footer>
+        <p>© 2025 ООО "Улей Земли". Все права защищены.</p>
+    </footer>
+    <script src="login.js"></script>
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <link rel="icon" href="data:,">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Улей Земли - Учёт мёда</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="logo-container">
+      <img src="images/new_logo.png" alt="Логотип фермы">
+      <h1 class="logo-text">Улей Земли</h1>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Главная</a></li>
+        <li><a href="bee-managment.html">Учёт пчёл</a></li>
+        <li><a href="honey-management.html" class="active">Учёт мёда</a></li>
+        <li><a href="flower-management.html">Учёт цветов</a></li>
+        <li><a href="profile.html">Профиль</a></li>
+      </ul>
+    </nav>
+  </header>
+  
+  <main>
+    <section class="bee-management">
+      <h2>Учёт мёда</h2>
+      
+      <!-- Фильтры -->
+      <div class="filters">
+        <label for="yearFilter">Год:</label>
+        <input type="number" id="yearFilter" placeholder="Напр. 2024">
+
+        <label for="familyFilter">Семья:</label>
+        <input type="number" id="familyFilter" placeholder="Номер семьи">
+
+        <label for="honeyFilter">Мёд от (кг):</label>
+        <input type="number" step="0.1" id="honeyFilter" placeholder="Минимум">
+
+        <label for="waxFilter">Воск от (кг):</label>
+        <input type="number" step="0.1" id="waxFilter" placeholder="Минимум">
+      </div>
+
+      
+      <!-- Таблица учёта мёда -->
+      <table id="honeyTable" class="bee-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Год сбора</th>
+            <th>Пчелиная семья (№)</th>
+            <th>Мёд (кг)</th>
+            <th>Воск (кг)</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- сюда будет вставляться информация -->
+        </tbody>
+      </table>
+      
+      <!-- Кнопка для добавления мёда -->
+      <button id="addButton" class="add-button">Добавить мед</button>
+      
+<div id="addModal" class="modal">
+  <div class="modal-content">
+    <span class="close-modal" id="addClose">&times;</span>
+    <h3>Добавить продукцию</h3>
+    <form id="addForm">
+      <label for="addYear">Год сбора:</label>
+      <input type="number" id="addYear" name="productivity_year" required>
+
+      <label for="addBeefamily">Пчелиная семья:</label>
+      <select id="addBeefamily" name="beefamily_id" required>
+        <option value="" disabled selected>— Выберите семью —</option>
+      </select>
+
+
+      <label for="addHoney">Мёд (кг):</label>
+      <input type="number" step="0.1" id="addHoney" name="honey_kg" step="0.1">
+
+      <label for="addWax">Воск (кг):</label>
+      <input type="number" step="0.1" id="addWax" name="wax_kg" step="0.1">
+
+      <button id="save-add" type="submit" class="submit-button">Сохранить</button>
+    </form>
+  </div>
+</div>
+
+
+<div id="detailsModal" class="modal">
+  <div class="modal-content">
+    <span class="close-modal">&times;</span>
+    <h3>Информация о продукции</h3>
+    <p><strong>ID:</strong> <span id="detail-id"></span></p>
+    <p><strong>Год сбора:</strong> <span id="detail-year"></span></p>
+    <p><strong>Пчелиная семья:</strong> <span id="detail-family"></span></p>
+    <p><strong>Мёд (кг):</strong> <span id="detail-honey"></span></p>
+    <p><strong>Воск (кг):</strong> <span id="detail-wax"></span></p>
+  </div>
+</div>
+
+<div id="editModal" class="modal">
+  <div class="modal-content">
+    <span class="close-modal">&times;</span>
+    <h3>Редактировать продуктивность</h3>
+    <form id="edit-form">
+      <input type="hidden" id="edit-id">
+
+      <div class="form-group">
+        <label for="edit-year">Год сбора:</label>
+        <input type="number" id="edit-year" required>
+      </div>
+
+      <div class="form-group">
+        <label for="edit-honey">Мёд (кг):</label>
+        <input type="number" step="0.1" id="edit-honey" required>
+      </div>
+
+      <div class="form-group">
+        <label for="edit-wax">Воск (кг):</label>
+        <input type="number" step="0.1" id="edit-wax" required>
+      </div>
+
+      <button type="submit" class="submit-button">Сохранить</button>
+    </form>
+  </div>
+</div>
+
+
+<div id="deleteModal" class="modal">
+  <div class="modal-content">
+    <h3>Подтверждение удаления</h3>
+    <p>Вы действительно хотите удалить запись?</p>
+    <div class="modal-actions">
+      <button id="confirm-delete" class="modal-delete-button">Удалить</button>
+      <button id="cancel-delete" class="modal-cancel-button">Отмена</button>
+    </div>
+  </div>
+</div>
+
+
+  </main>
+  <footer>
+    <p>© 2025 ООО "Улей Земли". Все права защищены.</p>
+  </footer>
+  
+  <!-- Подключение Chart.js и скрипта для графика -->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="honeyChart.js"></script> -->
+  <script src="./honey-management.js" defer></script>  
+</body>
+</html>

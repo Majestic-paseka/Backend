@@ -1,0 +1,104 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  user_id       Int             @id @default(autoincrement())
+  full_name     String          @db.VarChar(100)
+  password_hash String          @db.VarChar(255)
+  role          String          @db.VarChar(50)
+  email         String          @unique @db.VarChar(100)
+  phone         String?         @db.VarChar(20)
+  beeFamilies   BeeFamily[]
+  monthlyCounts MonthlyFamilyCount[]
+}
+
+model BeeFamily {
+  beefamily_id     Int             @id @default(autoincrement())
+  user             User            @relation(fields: [user_id], references: [user_id])
+  user_id          Int
+  beefamily_number String          @db.VarChar(50)
+  queen_birth_year Int?
+  mother_family    String?         @db.VarChar(50)
+  queen_breed      String?         @db.VarChar(50)
+  queen_line       String?         @db.VarChar(50)
+  createdAt        DateTime @default(now())
+  inspections      Inspection[]
+  productivity     Productivity[]
+  yards            BeeFamilyYard[]
+}
+
+model MalliferousPlant {
+  plant_id           Int               @id @default(autoincrement())
+  plant_name         String            @db.VarChar(100)
+  plant_species      String?           @db.VarChar(100)
+  honey_price        Decimal?          @db.Decimal(10, 2)
+  start_blooming     DateTime?
+  end_blooming       DateTime?
+  purpose_of_sowing  String?           @db.VarChar(255)
+  honey_productivity Decimal?          @db.Decimal(10, 2)
+  createdAt          DateTime @default(now())
+  yards              HoneyPlantYard[]
+}
+
+model Inspection {
+  inspection_id      Int      @id @default(autoincrement())
+  beefamily   BeeFamily @relation(fields: [beefamily_id], references: [beefamily_id], onDelete: Cascade)
+  beefamily_id       Int
+  data_of_inspection DateTime
+  power_of_family    Int?
+  total_frames       Int?
+  brood_frames       Int?
+  notes_of_inspection String?
+  notes_what_to_do    String?
+}
+
+model Productivity {
+  productivity_id   Int      @id @default(autoincrement())
+  productivity_year Int
+  productivity_date DateTime?
+  beefamily BeeFamily @relation(fields: [beefamily_id], references: [beefamily_id], onDelete: Cascade)
+  beefamily_id      Int
+  honey_kg          Decimal?  @db.Decimal(10, 2)
+  wax_kg            Decimal?  @db.Decimal(10, 2)
+  swarming_rate     Int?
+  number_of_nucs    Int?
+  wintering_notes   String?
+}
+
+model HoneyPlantYard {
+  yard_id                Int               @id @default(autoincrement())
+  plant                 MalliferousPlant? @relation(fields: [plant_id], references: [plant_id])
+  plant_id              Int?
+  yard_honey_productivity Decimal?        @db.Decimal(10, 2)
+  area                  Decimal?          @db.Decimal(10, 2)
+  wheather_conditions   String?
+  notes                 String?
+  families              BeeFamilyYard[]
+}
+
+model BeeFamilyYard {
+  beefamily BeeFamily @relation(fields: [beefamily_id], references: [beefamily_id], onDelete: Cascade)
+  beefamily_id Int
+  yard        HoneyPlantYard  @relation(fields: [yard_id], references: [yard_id])
+  yard_id     Int
+  start_date  DateTime
+  end_date    DateTime?
+
+  @@id([beefamily_id, yard_id])
+}
+
+model MonthlyFamilyCount {
+  count_id     Int    @id @default(autoincrement())
+  user         User   @relation(fields: [user_id], references: [user_id])
+  user_id      Int
+  year         Int
+  month        Int
+  family_count Int
+  notes        String?
+}
